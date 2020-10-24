@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Transaction = require("../models/workout");
+const Workout = require("../models/workout");
 const path = require('path');
 
 router.post("/api/transaction", ({ body }, res) => {
@@ -33,8 +33,26 @@ router.get("/api/transaction", (req, res) => {
     });
 });
 
+
+
+
+
 router.get("/stats", (req, res) => {
     res.sendFile(path.join(__dirname, '../public/stats.html'));
+})
+
+router.get("/exercise", (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/exercise.html'));
+})
+
+router.post("/api/workouts", ({ body }, res) => {
+    Workout.create(body)
+    .then(dbWorkout => {
+        res.json(dbWorkout);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    });
 })
 
 module.exports = router;
