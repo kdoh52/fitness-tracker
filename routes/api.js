@@ -60,6 +60,18 @@ router.post("/api/workouts", ({ body }, res) => {
     });
 })
 
+// GETTING LAST WORKOUT
+router.get("/api/workouts", ({ body }, res) => {
+    Workout.find({})
+    .then(dbWorkout => {
+      // console.log(dbWorkout)
+        res.json(dbWorkout);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    });
+})
+
 router.put("/api/workouts/:id", (req, res) => {
   // console.log("hi")
     Workout.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
@@ -69,6 +81,17 @@ router.put("/api/workouts/:id", (req, res) => {
     .catch(err => {
         res.status(400).json(err);
     });
+})
+
+router.get("/api/workouts/range", (req, res) => {
+  Workout.find({})
+  .then(dbWorkout => {
+    console.log(dbWorkout)
+      res.json(dbWorkout);
+  })
+  .catch(err => {
+      res.status(400).json(err);
+  });
 })
 
 module.exports = router;

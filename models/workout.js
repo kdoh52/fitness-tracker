@@ -31,6 +31,11 @@ const workoutSchema = new Schema({
   reps: {
     type: Number,
     trim: true,
+  },
+  day: {
+    type: Date,
+    trim: true,
+    default: Date.now
   }
 });
 
