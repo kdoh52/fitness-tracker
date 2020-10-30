@@ -1,44 +1,6 @@
 const router = require("express").Router();
 const Workout = require("../models/workout");
 const path = require('path');
-const express = require("express");
-
-const app = express();
-
-
-router.post("/api/transaction", ({ body }, res) => {
-  Transaction.create(body)
-    .then(dbTransaction => {
-      res.json(dbTransaction);
-    })
-    .catch(err => {
-      res.status(400).json(err);
-    });
-});
-
-router.post("/api/transaction/bulk", ({ body }, res) => {
-  Transaction.insertMany(body)
-    .then(dbTransaction => {
-      res.json(dbTransaction);
-    })
-    .catch(err => {
-      res.status(400).json(err);
-    });
-});
-
-router.get("/api/transaction", (req, res) => {
-  Transaction.find({})
-    .sort({ date: -1 })
-    .then(dbTransaction => {
-      res.json(dbTransaction);
-    })
-    .catch(err => {
-      res.status(400).json(err);
-    });
-});
-
-
-
 
 
 router.get("/stats", (req, res) => {
@@ -74,7 +36,7 @@ router.get("/api/workouts", ({ body }, res) => {
 
 router.put("/api/workouts/:id", (req, res) => {
   // console.log("hi")
-    Workout.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+    Workout.findOneAndUpdate({ _id: req.params.id }, { $push: { exercises: req.body } }, { new: true })
     .then(dbWorkout => {
         res.json(dbWorkout);
     })
@@ -86,7 +48,7 @@ router.put("/api/workouts/:id", (req, res) => {
 router.get("/api/workouts/range", (req, res) => {
   Workout.find({})
   .then(dbWorkout => {
-    console.log(dbWorkout)
+    // console.log(dbWorkout)
       res.json(dbWorkout);
   })
   .catch(err => {
