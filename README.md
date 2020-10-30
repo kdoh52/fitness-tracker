@@ -6,7 +6,7 @@ This website application allows a user to create new workouts and add exercises 
 <img src="fitness-tracker.png" alt="fitness tracker screenshot">
 
 ## Deployed Application (Heroku)
-<a href="https://lit-taiga-57650.herokuapp.com/">Fitness Tracker</a>
+<a href="https://lit-taiga-57650.herokuapp.com/" target="_blank">Fitness Tracker</a>
 
 ## Credits
 * HTML
@@ -24,7 +24,7 @@ This website application allows a user to create new workouts and add exercises 
 * MongoDB Atlas
 
 ## Portfolio
-<a href="https://kdoh52.github.io/">Updated portfolio</a>
+<a href="https://kdoh52.github.io/" target="_blank">Updated portfolio</a>
 
 ## Contact
 * kdoh52@gmail.com
